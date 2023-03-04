@@ -19,7 +19,6 @@ type
     TelefoneTable: TFDQuery;
     TelefoneTableId: TFDAutoIncField;
     TelefoneTableDdd: TIntegerField;
-    TelefoneTableNumero: TIntegerField;
     TelefoneTableClienteId: TIntegerField;
     ClienteTableId: TFDAutoIncField;
     ClienteTableNome: TStringField;
@@ -28,6 +27,18 @@ type
     ClienteTableRg_Ie: TStringField;
     ClienteTableData: TDateField;
     ClienteTableAtivo: TStringField;
+    TelefoneTableNumero: TStringField;
+    EnderecoTable: TFDQuery;
+    IntegerField2: TIntegerField;
+    EnderecoTableId: TFDAutoIncField;
+    EnderecoTablelogradouro: TStringField;
+    EnderecoTablenumero: TIntegerField;
+    EnderecoTablecep: TStringField;
+    EnderecoTablebairro: TStringField;
+    EnderecoTablecidade: TStringField;
+    EnderecoTableestado: TStringField;
+    EnderecoTablepais: TStringField;
+    DataSourceEndereco: TDataSource;
     procedure ClienteTableAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
@@ -38,6 +49,10 @@ type
     function Telefone_Valido(out Mensagem: String):  Boolean;
     function SomenteNumeros(Cpf_Cnpj: String): String;
     function MascaraCpfCnpj: String;
+    function MascaraTelefone: String;
+    function ClienteEmEdicao: boolean;
+    function TelefoneEmEdicao: boolean;
+    function EnderecoEmEdicao: boolean;
   end;
 
 var
@@ -52,6 +67,21 @@ implementation
 uses FrmClientes, MaskUtils;
 
 { TDataModuleClientes }
+
+function TDataModuleClientes.ClienteEmEdicao: boolean;
+begin
+  Result := DataSourceCliente.State in [dsInsert, dsEdit]
+end;
+
+function TDataModuleClientes.TelefoneEmEdicao: boolean;
+begin
+  Result := DataSourceTelefone.State in [dsInsert, dsEdit]
+end;
+
+function TDataModuleClientes.EnderecoEmEdicao: boolean;
+begin
+  Result := DataSourceEndereco.State in [dsInsert, dsEdit]
+end;
 
 procedure TDataModuleClientes.ClienteTableAfterInsert(DataSet: TDataSet);
 begin
@@ -118,6 +148,16 @@ begin
     Result := '000\.000\.000\-00;0;'
   else
     Result := '00\.000\.000\/0000\-00;0;';
+end;
+
+function TDataModuleClientes.MascaraTelefone: String;
+begin
+   Result := '0000\-0000;0;_';
+//  case (Length(TelefoneTable.FieldByName('Numero').AsString)) of
+//    0..8:   Result := '0000\-0000;0;_';
+//    9:      Result := '00000\-0000;0;_'
+//  end;
+
 end;
 
 function TDataModuleClientes.SomenteNumeros(Cpf_Cnpj: String): String;

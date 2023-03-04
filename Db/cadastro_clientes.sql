@@ -15,7 +15,7 @@ CREATE TABLE clientes (
 CREATE TABLE telefones (
 	Id int NOT NULL AUTO_INCREMENT,
     Ddd int NOT NULL,
-    Numero int NOT NULL,
+    Numero varchar(15) NOT NULL,
     ClienteId int,
     PRIMARY KEY (Id),
     FOREIGN KEY (ClienteId) REFERENCES clientes(Id)

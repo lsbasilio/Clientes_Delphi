@@ -2,7 +2,7 @@ object FormClientes: TFormClientes
   Left = 0
   Top = 0
   Caption = 'Cadastro de Clientes'
-  ClientHeight = 515
+  ClientHeight = 581
   ClientWidth = 818
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,13 +19,12 @@ object FormClientes: TFormClientes
     Left = 0
     Top = 65
     Width = 818
-    Height = 450
+    Height = 516
     Align = alClient
     Color = clBtnHighlight
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 760
-    ExplicitHeight = 410
+    ExplicitHeight = 450
     object LabelCodigo: TLabel
       Left = 45
       Top = 91
@@ -172,7 +171,7 @@ object FormClientes: TFormClientes
       ValueUnchecked = ''
     end
     object DBEditCpfCnpj: TDBEdit
-      Left = 568
+      Left = 576
       Top = 108
       Width = 121
       Height = 21
@@ -189,7 +188,6 @@ object FormClientes: TFormClientes
       Height = 73
       Align = alTop
       TabOrder = 7
-      ExplicitWidth = 758
       object ButtonNovo: TButton
         Left = 70
         Top = 13
@@ -236,15 +234,15 @@ object FormClientes: TFormClientes
         OnClick = ButtonExcluirClick
       end
     end
-    object PageControl1: TPageControl
+    object PageControlDadosCliente: TPageControl
       Left = 1
       Top = 216
       Width = 816
-      Height = 233
-      ActivePage = TabSheet1
+      Height = 299
+      ActivePage = TabSheetEndereco
       Align = alBottom
       TabOrder = 8
-      object TabSheet1: TTabSheet
+      object TabSheetTelefone: TTabSheet
         Caption = 'Telefones'
         object Label4: TLabel
           Left = 34
@@ -335,6 +333,9 @@ object FormClientes: TFormClientes
           DataField = 'Numero'
           DataSource = DataModuleClientes.DataSourceTelefone
           TabOrder = 3
+          OnChange = DBEditNumeroChange
+          OnEnter = DBEditNumeroEnter
+          OnKeyUp = DBEditNumeroKeyUp
         end
         object ButtonSalvarTelefone: TButton
           Left = 154
@@ -385,9 +386,9 @@ object FormClientes: TFormClientes
         end
         object DBGridTelefones: TDBGrid
           Left = 0
-          Top = 123
+          Top = 156
           Width = 808
-          Height = 82
+          Height = 115
           Align = alBottom
           DataSource = DataModuleClientes.DataSourceTelefone
           ReadOnly = True
@@ -434,6 +435,371 @@ object FormClientes: TFormClientes
             end>
         end
       end
+      object TabSheetEndereco: TTabSheet
+        Caption = 'Endere'#231'os'
+        ImageIndex = 1
+        object Label1: TLabel
+          Left = 42
+          Top = 80
+          Width = 106
+          Height = 13
+          Caption = 'C'#243'digo do Endere'#231'o'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label2: TLabel
+          Left = 187
+          Top = 80
+          Width = 94
+          Height = 13
+          Caption = 'C'#243'digo do Cliente'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label3: TLabel
+          Left = 334
+          Top = 80
+          Width = 62
+          Height = 13
+          Caption = 'Logradouro'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label8: TLabel
+          Left = 469
+          Top = 80
+          Width = 43
+          Height = 13
+          Caption = 'N'#250'mero'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label9: TLabel
+          Left = 550
+          Top = 80
+          Width = 20
+          Height = 13
+          Caption = 'CEP'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label10: TLabel
+          Left = 638
+          Top = 80
+          Width = 31
+          Height = 13
+          Caption = 'Bairro'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label11: TLabel
+          Left = 43
+          Top = 131
+          Width = 36
+          Height = 13
+          Caption = 'CIdade'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label12: TLabel
+          Left = 187
+          Top = 131
+          Width = 35
+          Height = 13
+          Caption = 'Estado'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label13: TLabel
+          Left = 331
+          Top = 131
+          Width = 21
+          Height = 13
+          Caption = 'Pa'#237's'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object ButtonNovoEndereco: TButton
+          Left = 42
+          Top = 25
+          Width = 102
+          Height = 36
+          Caption = 'Novo'
+          TabOrder = 0
+          OnClick = ButtonNovoEnderecoClick
+        end
+        object ButtonSalvarEndereco: TButton
+          Left = 162
+          Top = 25
+          Width = 102
+          Height = 36
+          Caption = 'Salvar'
+          TabOrder = 1
+          OnClick = ButtonSalvarEnderecoClick
+        end
+        object ButtonAlterarEndereco: TButton
+          Left = 282
+          Top = 25
+          Width = 102
+          Height = 36
+          Caption = 'Alterar'
+          TabOrder = 2
+          OnClick = ButtonAlterarEnderecoClick
+        end
+        object ButtonCancelarEndereco: TButton
+          Left = 402
+          Top = 25
+          Width = 102
+          Height = 36
+          Caption = 'Cancelar'
+          TabOrder = 3
+          OnClick = ButtonCancelarEnderecoClick
+        end
+        object ButtonExcluirEndereco: TButton
+          Left = 525
+          Top = 25
+          Width = 102
+          Height = 36
+          Caption = 'Excluir'
+          TabOrder = 4
+          OnClick = ButtonExcluirEnderecoClick
+        end
+        object DBEditCodigoEndereco: TDBEdit
+          Left = 41
+          Top = 99
+          Width = 121
+          Height = 21
+          Color = clInfoBk
+          DataField = 'Id'
+          DataSource = DataModuleClientes.DataSourceEndereco
+          ReadOnly = True
+          TabOrder = 5
+        end
+        object DBEditCodigoEnderecoCliente: TDBEdit
+          Left = 187
+          Top = 99
+          Width = 121
+          Height = 21
+          Color = clInfoBk
+          DataField = 'ClienteId'
+          DataSource = DataModuleClientes.DataSourceEndereco
+          ReadOnly = True
+          TabOrder = 6
+        end
+        object DBEditLogradouro: TDBEdit
+          Left = 333
+          Top = 99
+          Width = 121
+          Height = 21
+          DataField = 'logradouro'
+          DataSource = DataModuleClientes.DataSourceEndereco
+          TabOrder = 7
+        end
+        object DBEditEnderecoNumero: TDBEdit
+          Left = 468
+          Top = 99
+          Width = 60
+          Height = 21
+          DataField = 'Numero'
+          DataSource = DataModuleClientes.DataSourceEndereco
+          TabOrder = 8
+        end
+        object DBEditCep: TDBEdit
+          Left = 549
+          Top = 99
+          Width = 68
+          Height = 21
+          DataField = 'cep'
+          DataSource = DataModuleClientes.DataSourceEndereco
+          TabOrder = 9
+          OnKeyUp = DBEditNumeroKeyUp
+        end
+        object DBEditBairro: TDBEdit
+          Left = 637
+          Top = 99
+          Width = 116
+          Height = 21
+          DataField = 'bairro'
+          DataSource = DataModuleClientes.DataSourceEndereco
+          TabOrder = 10
+        end
+        object DBEditCidade: TDBEdit
+          Left = 42
+          Top = 150
+          Width = 116
+          Height = 21
+          DataField = 'cidade'
+          DataSource = DataModuleClientes.DataSourceEndereco
+          TabOrder = 11
+          OnKeyUp = DBEditNumeroKeyUp
+        end
+        object DBEditEstado: TDBEdit
+          Left = 186
+          Top = 150
+          Width = 122
+          Height = 21
+          DataField = 'estado'
+          DataSource = DataModuleClientes.DataSourceEndereco
+          TabOrder = 12
+        end
+        object DBEditPais: TDBEdit
+          Left = 331
+          Top = 150
+          Width = 124
+          Height = 21
+          DataField = 'pais'
+          DataSource = DataModuleClientes.DataSourceEndereco
+          TabOrder = 13
+          OnKeyUp = DBEditNumeroKeyUp
+        end
+        object DBGridEnderecos: TDBGrid
+          Left = 0
+          Top = 180
+          Width = 808
+          Height = 91
+          Align = alBottom
+          DataSource = DataModuleClientes.DataSourceEndereco
+          ReadOnly = True
+          TabOrder = 14
+          TitleFont.Charset = DEFAULT_CHARSET
+          TitleFont.Color = clWindowText
+          TitleFont.Height = -11
+          TitleFont.Name = 'Segoe UI'
+          TitleFont.Style = []
+          Columns = <
+            item
+              Expanded = False
+              FieldName = 'ClienteId'
+              Title.Caption = 'Cliente'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Segoe UI'
+              Title.Font.Style = [fsBold]
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'logradouro'
+              Title.Caption = 'Logradouro'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Segoe UI'
+              Title.Font.Style = [fsBold]
+              Width = 222
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'numero'
+              Title.Caption = 'N'#250'mero'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Segoe UI'
+              Title.Font.Style = [fsBold]
+              Width = 70
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'cep'
+              Title.Caption = 'CEP'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Segoe UI'
+              Title.Font.Style = [fsBold]
+              Width = 80
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'bairro'
+              Title.Caption = 'Bairro'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Segoe UI'
+              Title.Font.Style = [fsBold]
+              Width = 169
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'cidade'
+              Title.Caption = 'Cidade'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Segoe UI'
+              Title.Font.Style = [fsBold]
+              Width = 147
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'estado'
+              Title.Caption = 'Estado'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Segoe UI'
+              Title.Font.Style = [fsBold]
+              Width = 120
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'pais'
+              Title.Caption = 'Pa'#237's'
+              Title.Font.Charset = DEFAULT_CHARSET
+              Title.Font.Color = clWindowText
+              Title.Font.Height = -11
+              Title.Font.Name = 'Segoe UI'
+              Title.Font.Style = [fsBold]
+              Width = 129
+              Visible = True
+            end>
+        end
+      end
     end
   end
   object PanelFiltro: TPanel
@@ -446,7 +812,6 @@ object FormClientes: TFormClientes
     Color = clBtnHighlight
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 760
     object LabelNomeCliente: TLabel
       Left = 34
       Top = 27
