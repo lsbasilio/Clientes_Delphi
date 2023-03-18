@@ -252,16 +252,23 @@ end;
 
 procedure TFormClientes.ButtonSalvarClick(Sender: TObject);
 var
-  Mensagem: String;
+  Mensagem, Cpf_Cnpj: String;
 begin
-  if not (DmClientes.DataModuleClientes.ClienteEmEdicao) then
+  if not (DataModuleClientes.ClienteEmEdicao) then
      ShowMessage('Cliente não está sendo cadastrado ou editado!')
   else
   begin
-     if not (DmClientes.DataModuleClientes.Cliente_Valido(Mensagem)) then
+     if not (DataModuleClientes.Cliente_Valido(Mensagem)) then
           ShowMessage(Mensagem)
      else
+     begin
+       Cpf_Cnpj := Trim(DataModuleClientes.ClienteTable.FieldByName('Cpf_Cnpj').AsString);
+
+       if (DataModuleClientes.CpfCnpjJaExiste(Cpf_Cnpj)) then
+          ShowMessage('CPF ou CNPJ do Cliente já existe!')
+       else
           DmClientes.DataModuleClientes.ClienteTable.Post;
+     end;
   end;
 end;
 
@@ -284,8 +291,8 @@ end;
 
 procedure TFormClientes.DBEditCpfCnpjChange(Sender: TObject);
 begin
-  if (Trim(DmClientes.DataModuleClientes.ClienteTable.FieldByName('Cpf_Cnpj').AsString) <> '') then
-    DmClientes.DataModuleClientes.ClienteTable.FieldByName('Cpf_Cnpj').EditMask := DmClientes.DataModuleClientes.MascaraCpfCnpj;
+{  if (Trim(DmClientes.DataModuleClientes.ClienteTable.FieldByName('Cpf_Cnpj').AsString) <> '') then
+    DmClientes.DataModuleClientes.ClienteTable.FieldByName('Cpf_Cnpj').EditMask := DmClientes.DataModuleClientes.MascaraCpfCnpj;}
 end;
 
 procedure TFormClientes.DBEditCpfCnpjEnter(Sender: TObject);

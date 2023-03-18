@@ -24,7 +24,6 @@ object FormClientes: TFormClientes
     Color = clBtnHighlight
     ParentBackground = False
     TabOrder = 1
-    ExplicitHeight = 450
     object LabelCodigo: TLabel
       Left = 45
       Top = 91
@@ -52,8 +51,8 @@ object FormClientes: TFormClientes
       ParentFont = False
     end
     object LabelCpfCnpj: TLabel
-      Left = 568
-      Top = 89
+      Left = 637
+      Top = 91
       Width = 20
       Height = 13
       Caption = 'CPF'
@@ -104,14 +103,14 @@ object FormClientes: TFormClientes
     object DBEditNome: TDBEdit
       Left = 197
       Top = 108
-      Width = 121
+      Width = 180
       Height = 21
       DataField = 'Nome'
       DataSource = DataModuleClientes.DataSourceCliente
       TabOrder = 1
     end
     object DBRadioGroupTipoCliente: TDBRadioGroup
-      Left = 336
+      Left = 397
       Top = 89
       Width = 215
       Height = 51
@@ -153,7 +152,7 @@ object FormClientes: TFormClientes
       TabOrder = 6
     end
     object DBCheckBoxAtivo: TDBCheckBox
-      Left = 392
+      Left = 397
       Top = 166
       Width = 59
       Height = 17
@@ -171,7 +170,7 @@ object FormClientes: TFormClientes
       ValueUnchecked = ''
     end
     object DBEditCpfCnpj: TDBEdit
-      Left = 576
+      Left = 637
       Top = 108
       Width = 121
       Height = 21

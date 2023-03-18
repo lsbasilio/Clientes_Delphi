@@ -53,6 +53,7 @@ type
     function ClienteEmEdicao: boolean;
     function TelefoneEmEdicao: boolean;
     function EnderecoEmEdicao: boolean;
+    function CpfCnpjJaExiste(Cpf_Cnpj: String): Boolean;
   end;
 
 var
@@ -115,6 +116,28 @@ begin
      Exit;
   end;
 
+end;
+
+function TDataModuleClientes.CpfCnpjJaExiste(Cpf_Cnpj: String): Boolean;
+var
+  QueryAux: TFDQuery;
+begin
+
+  Result := False;
+
+  try
+
+    QueryAux := TFDQuery.Create(Self);
+    QueryAux.Connection := FDConnectionClientes;
+    QueryAux.SQL.Text := 'SELECT * FROM clientes WHERE Cpf_Cnpj = ' + QuotedStr(Cpf_Cnpj);
+    QueryAux.Open;
+
+    if not (QueryAux.IsEmpty) then
+      Result := True;
+
+  finally
+    QueryAux.Free;
+  end;
 end;
 
 procedure TDataModuleClientes.FiltrarCliente(Nome: String; Ativo: Boolean);

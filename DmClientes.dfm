@@ -131,6 +131,7 @@ object DataModuleClientes: TDataModuleClientes
       FieldName = 'Id'
       Origin = 'Id'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object EnderecoTablelogradouro: TStringField
       AutoGenerateValue = arDefault
@@ -147,6 +148,7 @@ object DataModuleClientes: TDataModuleClientes
       AutoGenerateValue = arDefault
       FieldName = 'cep'
       Origin = 'cep'
+      EditMask = '00000\-000;0;_'
       Size = 15
     end
     object EnderecoTablebairro: TStringField
